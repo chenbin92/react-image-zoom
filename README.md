@@ -10,12 +10,12 @@ You can [view the demo here](https://rpearce.github.io/react-medium-image-zoom/)
 
 ## Installation
 ```
-$ npm install --save react-medium-image-zoom
+$ npm install --save react-zoom-images
 ```
 
 ## Usage
 ```js
-import ImageZoom from 'react-medium-image-zoom'
+import ImageZoom from 'react-zoom-images'
 
 function MyComponent(props) {
   return (

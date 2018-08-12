@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { bool, func, object, shape, string } from 'prop-types'
+import { bool, func, object, shape, string, number } from 'prop-types'
 import defaults from './defaults'
 import { isMaxDimension } from './helpers'
 import { isEnterOrSpaceBarKey } from './keyboardEvents'
@@ -96,7 +96,7 @@ export default class ImageZoom extends Component {
   }
 
   render() {
-    const { image } = this.props
+    const { image, originalImage } = this.props
     const { isMaxDimension, src } = this.state
 
     /**
@@ -131,6 +131,16 @@ export default class ImageZoom extends Component {
         onLoad={this._handleLoad}
         {...attrs}
       />,
+      originalImage === 'zoomImage' ?
+        <img
+          key="zoomImage"
+          src={this.props.zoomImage.src}
+          ref={x => {
+            this.zoomImage = x
+          }}
+          style={{ display: 'none' }}
+        />
+       : null,
       this.image && (isZoomed || this.isClosing) ?
         <EventsWrapper
           key="portal"
@@ -142,11 +152,13 @@ export default class ImageZoom extends Component {
         >
           <Zoom
             defaultStyles={this.props.defaultStyles}
-            image={this.image}
+            image={originalImage === 'zoomImage' ? this.zoomImage : this.image}
             shouldRespectMaxDimension={this.props.shouldRespectMaxDimension}
             zoomImage={this.props.zoomImage}
             zoomMargin={this.props.zoomMargin}
             onUnzoom={this._handleUnzoom}
+            zoomTransitionDuration={this.props.zoomTransitionDuration}
+            unzoomTransitionDuration={this.props.unzoomTransitionDuration}
           />
         </EventsWrapper>
        : null
@@ -273,5 +285,8 @@ ImageZoom.propTypes = {
   shouldReplaceImage: bool,
   shouldRespectMaxDimension: bool,
   onZoom: func,
-  onUnzoom: func
+  onUnzoom: func,
+  unzoomTransitionDuration: number,
+  zoomTransitionDuration: number,
+  originalImage: string
 }

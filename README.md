@@ -1,7 +1,6 @@
-# react-medium-image-zoom
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors)
+# react-image-zoom
 
-[![npm version](https://img.shields.io/npm/v/react-medium-image-zoom.svg)](https://www.npmjs.com/package/react-medium-image-zoom) [![npm downloads](https://img.shields.io/npm/dt/react-medium-image-zoom.svg)](https://www.npmjs.com/package/react-medium-image-zoom)
+> Forked from  [react-medium-image-zoom](https://github.com/rpearce/react-medium-image-zoom)
 
 This library is a different implementation of [Medium.com's image zoom](https://medium.com/design/image-zoom-on-medium-24d146fc0c20) that allows for a low-res and high-res images to work together for “zooming” effects and works regardless of parent elements that have `overflow: hidden` or [parents with transform properties](https://codepen.io/rpearce/pen/MEyOmb). Versions `>=3.0.0` are compatible with [React.js](https://github.com/facebook/react) `>=16.x`; if you need compatibility with `react@^0.14.0 || ^15.0.0`, please use version `2.x`.
 
@@ -42,10 +41,13 @@ function MyComponent(props) {
 }
 ```
 
-| Prop                          | Type    | Required | Default           | Details |
-| ---                           | ---     | ---      | ---               | ---     |
-| `image`                       | object  | yes      | none              | The original image |
-| `zoomImage`                   | object  | no       | `image`           | The image to be used for zooming |
+| Prop                 | Type    | Required | Default           | Details |
+| ---                  | ---     | ---      | ---               | ---     |
+| `image`              | object  | yes      | none              | The original image by default |
+| `zoomImage`          | object  | no       | `image`           | The image to be used for zooming |
+| `originalImage` <img src="https://img.alicdn.com/tfs/TB1PWfhnsIrBKNjSZK9XXagoVXa-128-128.png" width="16" height="16">               | string  | no       | `image`           | Specify the original image （`image`, `zoomImage`） |
+| `zoomTransitionDuration`  <img src="https://img.alicdn.com/tfs/TB1PWfhnsIrBKNjSZK9XXagoVXa-128-128.png" width="16" height="16">         | number  | no       | `300ms`           | Animation time when opening the zoomImage |
+|`unzoomTransitionDuration`<img src="https://img.alicdn.com/tfs/TB1PWfhnsIrBKNjSZK9XXagoVXa-128-128.png" width="16" height="16">      | number  | no       | `300ms`           | Animation time when closing the zoomImage |
 | `zoomMargin`                  | number  | no       | `40`              | Pixel number to offset zoomed image from the window |
 | `isZoomed`                    | boolean | no       | `false`           | For more direct control over the zoom state |
 | `shouldHandleZoom`            | func    | no       | `(event) => true` | Pass this callback to intercept a zoom click event and determine whether or not to zoom. Function must return a truthy or falsy value |

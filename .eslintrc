@@ -23,7 +23,7 @@
     "no-debugger": "warn",
     "no-duplicate-imports": "error",
     "no-eq-null": "error",
-    "no-extra-parens": "error",
+    "no-extra-parens": "warn",
     "no-return-assign": "error",
     "no-template-curly-in-string": "error",
     "no-trailing-spaces": "error",

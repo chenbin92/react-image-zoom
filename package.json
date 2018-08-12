@@ -1,7 +1,7 @@
 {
-  "name": "react-medium-image-zoom",
-  "version": "3.0.13",
-  "description": "Medium.com style image zoom for React",
+  "name": "react-zoom-images",
+  "version": "0.0.1",
+  "description": "image zoom for React",
   "main": "lib/index.js",
   "scripts": {
     "build:js": "babel src --out-dir lib",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rpearce/react-medium-image-zoom.git"
+    "url": "https://github.com/chenbin92/react-image-zoom"
   },
   "keywords": [
     "react",
@@ -43,7 +43,7 @@
     "zoom",
     "image"
   ],
-  "author": "Robert Pearce",
+  "author": "chenbin92",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rpearce/react-medium-image-zoom/issues"
@@ -78,5 +78,9 @@
     "prettier": "^1.14.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.com"
   }
 }

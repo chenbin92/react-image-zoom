@@ -37,7 +37,9 @@ export default class Zoom extends Component {
   }
 
   componentDidMount() {
-    const { zoomImage: { src, srcSet } } = this.props
+    const {
+      zoomImage: { src, srcSet }
+    } = this.props
 
     this.setState({ hasLoaded: true })
 
@@ -95,13 +97,28 @@ export default class Zoom extends Component {
   }
 
   _getZoomImageStyle() {
-    const { image, shouldRespectMaxDimension, src, zoomMargin } = this.props
+    const {
+      image,
+      shouldRespectMaxDimension,
+      src,
+      zoomMargin,
+      zoomTransitionDuration,
+      unzoomTransitionDuration
+    } = this.props
     const imageOffset = image.getBoundingClientRect()
 
     const { top, left } = imageOffset
     const { width, height, naturalWidth, naturalHeight } = image
 
     const style = { top, left, width, height }
+
+    if (zoomTransitionDuration || zoomTransitionDuration === 0) {
+      defaults.styles.zoomImage.transition = `transform ${zoomTransitionDuration}ms`
+    }
+
+    if (unzoomTransitionDuration || unzoomTransitionDuration === 0) {
+      defaults.transitionDuration = unzoomTransitionDuration
+    }
 
     if (!this.state.hasLoaded || !this.state.isZoomed) {
       return Object.assign(
@@ -163,7 +180,9 @@ Zoom.propTypes = {
     style: object
   }).isRequired,
   zoomMargin: number.isRequired,
-  onUnzoom: func.isRequired
+  onUnzoom: func.isRequired,
+  zoomTransitionDuration: number,
+  unzoomTransitionDuration: number
 }
 
 const TmpImg = ({ src, style, ...props }) =>
